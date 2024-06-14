@@ -54,6 +54,10 @@ public class News extends AbstractBase {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "news" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<UserNews> userNews;
+
     public News(String title, String content, String author, String description, String thumbnail) {
         this.title = title;
         this.content = content;
